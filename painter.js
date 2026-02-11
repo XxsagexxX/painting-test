@@ -48,8 +48,11 @@ function spawnDraggableTool(toolName) {
   tool.className = 'drag-tool';
   tool.alt = toolName;
   tool.src = `${toolName}.svg`;
-  tool.style.left = '50px';
-  tool.style.top = '120px';
+  const dropRect = dropzone.getBoundingClientRect();
+  const startX = Math.max(20, dropRect.left - 110);
+  const startY = Math.max(20, dropRect.top + (dropRect.height * 0.32));
+  tool.style.left = `${startX}px`;
+  tool.style.top = `${startY}px`;
   document.body.appendChild(tool);
 
   state.activeTool = toolName;
@@ -191,62 +194,100 @@ function drawBase() {
 
 function drawSketch() {
   const cx = canvas.width / 2;
-  const top = canvas.height * 0.28;
+  const cy = canvas.height * 0.28;
+  const petalRadius = 22;
+  const guide = [
+    [cx, cy - 28],
+    [cx + 27, cy - 8],
+    [cx + 17, cy + 24],
+    [cx - 17, cy + 24],
+    [cx - 27, cy - 8]
+  ];
+
   ctx.strokeStyle = '#948f92';
   ctx.lineWidth = 2;
+  guide.forEach(([x, y]) => {
+    ctx.beginPath();
+    ctx.arc(x, y, petalRadius, 0, Math.PI * 2);
+    ctx.stroke();
+  });
+
+  const stemTop = cy + 36;
+  const stemBottom = cy + 124;
   ctx.beginPath();
-  ctx.arc(cx, top, 24, 0, Math.PI * 2);
-  const shoulderY = canvas.height * 0.56;
-  const stemBottom = canvas.height * 0.84;
-  ctx.moveTo(cx, top + 24); ctx.lineTo(cx, stemBottom);
-  ctx.moveTo(cx, shoulderY); ctx.lineTo(cx - 38, shoulderY + 20);
-  ctx.moveTo(cx, shoulderY); ctx.lineTo(cx + 36, shoulderY + 18);
+  ctx.moveTo(cx, stemTop);
+  ctx.lineTo(cx, stemBottom);
+  ctx.stroke();
+
+  // upward-pointing leaf guides
+  ctx.beginPath();
+  ctx.moveTo(cx - 4, cy + 96);
+  ctx.lineTo(cx - 34, cy + 70);
+  ctx.moveTo(cx + 4, cy + 92);
+  ctx.lineTo(cx + 36, cy + 64);
   ctx.stroke();
 }
 
 function paintPetals() {
   const cx = canvas.width / 2;
   const cy = canvas.height * 0.28;
+  const petals = [
+    [cx, cy - 28],
+    [cx + 27, cy - 8],
+    [cx + 17, cy + 24],
+    [cx - 17, cy + 24],
+    [cx - 27, cy - 8]
+  ];
+
   ctx.fillStyle = '#e393d8';
-  [[cx - 22, cy],[cx + 22, cy],[cx, cy - 20],[cx, cy + 20]].forEach(([x,y]) => {
+  petals.forEach(([x, y]) => {
     ctx.beginPath();
     ctx.arc(x, y, 18, 0, Math.PI * 2);
     ctx.fill();
   });
+
   ctx.fillStyle = '#f28446';
   ctx.beginPath();
-  ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+  ctx.arc(cx, cy, 9, 0, Math.PI * 2);
   ctx.fill();
 }
 
 function paintStemLeaves() {
   const cx = canvas.width / 2;
+  const cy = canvas.height * 0.28;
+
+  // small stem
   ctx.strokeStyle = '#66a64d';
   ctx.lineWidth = 6;
   ctx.beginPath();
-  const stemTop = canvas.height * 0.36;
-  const stemBottom = canvas.height * 0.84;
-  ctx.moveTo(cx, stemTop);
-  ctx.lineTo(cx, stemBottom);
+  ctx.moveTo(cx, cy + 38);
+  ctx.lineTo(cx, cy + 126);
   ctx.stroke();
 
+  // leaves pointing upward
   ctx.fillStyle = '#8bc86c';
-  const leafY = canvas.height * 0.64;
-  ctx.beginPath(); ctx.ellipse(cx - 28, leafY, 18, 9, -0.4, 0, Math.PI * 2); ctx.fill();
-  ctx.beginPath(); ctx.ellipse(cx + 28, leafY - 2, 18, 9, 0.4, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(cx - 24, cy + 88, 16, 8, -0.85, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(cx + 24, cy + 82, 16, 8, 0.85, 0, Math.PI * 2); ctx.fill();
 }
 
 function drawOutline() {
   const cx = canvas.width / 2;
   const cy = canvas.height * 0.28;
+  const petals = [
+    [cx, cy - 28],
+    [cx + 27, cy - 8],
+    [cx + 17, cy + 24],
+    [cx - 17, cy + 24],
+    [cx - 27, cy - 8]
+  ];
+
   ctx.strokeStyle = '#6a4e53';
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.arc(cx - 22, cy, 18, 0, Math.PI * 2);
-  ctx.arc(cx + 22, cy, 18, 0, Math.PI * 2);
-  ctx.arc(cx, cy - 20, 18, 0, Math.PI * 2);
-  ctx.arc(cx, cy + 20, 18, 0, Math.PI * 2);
-  ctx.stroke();
+  petals.forEach(([x, y]) => {
+    ctx.beginPath();
+    ctx.arc(x, y, 18, 0, Math.PI * 2);
+    ctx.stroke();
+  });
 }
 
 function sparkleWash() {
