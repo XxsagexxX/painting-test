@@ -91,7 +91,7 @@ header p { margin: 0.28rem 0 0; font-size: 1.06rem; }
 }
 
 #paint-canvas {
-  width: min(100%, 360px);
+  width: min(100%, 340px);
   background: #fffef9;
   border: 10px solid var(--wood);
   border-bottom-width: 14px;
@@ -118,7 +118,9 @@ header p { margin: 0.28rem 0 0; font-size: 1.06rem; }
 }
 
 .artist-cat img {
-  width: 240px;
+  width: 230px;
+  height: 290px;
+  object-fit: contain;
   max-width: 100%;
   display: block;
   margin: 0 auto;
