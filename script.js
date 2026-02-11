@@ -338,3 +338,4 @@ function initCrossword() {
 }
 
 closeBtn.addEventListener('click', () => modal.close());
+
