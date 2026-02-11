@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="pixel cat sticker">
+  <rect width="120" height="120" fill="none"/>
+  <g transform="translate(8,10)">
+    <rect x="20" y="18" width="16" height="16" fill="#5b4637"/>
+    <rect x="68" y="18" width="16" height="16" fill="#5b4637"/>
+
+    <rect x="24" y="30" width="56" height="44" rx="8" fill="#fff8f2"/>
+    <rect x="30" y="36" width="44" height="30" rx="6" fill="#fef1e8"/>
+
+    <rect x="38" y="46" width="8" height="8" fill="#5b4637"/>
+    <rect x="58" y="46" width="8" height="8" fill="#5b4637"/>
+    <rect x="48" y="54" width="8" height="8" fill="#f08ea8"/>
+
+    <rect x="32" y="54" width="8" height="6" fill="#f9c3cf"/>
+    <rect x="66" y="54" width="8" height="6" fill="#f9c3cf"/>
+
+    <rect x="10" y="66" width="20" height="10" rx="4" fill="#fff8f2"/>
+    <rect x="74" y="66" width="20" height="10" rx="4" fill="#fff8f2"/>
+
+    <rect x="88" y="40" width="14" height="10" rx="5" fill="#d9a26a"/>
+    <rect x="100" y="34" width="8" height="8" rx="4" fill="#d9a26a"/>
+
+    <rect x="32" y="84" width="40" height="8" rx="4" fill="#f08ea8"/>
+  </g>
+</svg>
