@@ -112,10 +112,11 @@ header p { margin: 0.28rem 0 0; font-size: 1.06rem; }
   align-self: end;
   justify-self: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.38);
-  border: 2px dashed #f2f1ff;
+  background: transparent;
+  border: none;
   border-radius: 16px;
   padding: 0.55rem;
+  position: relative;
 }
 
 .artist-cat img {
@@ -126,8 +127,34 @@ header p { margin: 0.28rem 0 0; font-size: 1.06rem; }
 }
 
 #cat-mood {
-  margin: 0.35rem 0 0;
+  margin: 0;
   font-weight: 700;
+}
+
+.cat-dialog {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -64px;
+  min-width: 230px;
+  max-width: 320px;
+  background: rgba(255,255,255,0.92);
+  border: 2px solid #fff;
+  border-radius: 14px;
+  padding: 0.55rem 0.75rem;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.cat-dialog::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: rgba(255,255,255,0.92) transparent transparent transparent;
 }
 
 
