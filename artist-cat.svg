@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+  <rect width="340" height="340" fill="none"/>
+
+  <ellipse cx="190" cy="318" rx="92" ry="13" fill="#5b5561" opacity="0.25"/>
+
+  <!-- tail -->
+  <path d="M260 254 Q314 260 304 301 Q292 322 260 308 Q244 300 244 286" fill="none" stroke="#1d1c27" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- body -->
+  <ellipse cx="190" cy="216" rx="78" ry="88" fill="#1b1a24"/>
+  <ellipse cx="175" cy="222" rx="52" ry="66" fill="#222131"/>
+
+  <!-- back paw -->
+  <ellipse cx="226" cy="294" rx="30" ry="14" fill="#1a1822"/>
+  <!-- front paw -->
+  <ellipse cx="166" cy="300" rx="22" ry="12" fill="#171620"/>
+
+  <!-- neck highlight -->
+  <path d="M151 164 Q170 198 154 250" stroke="#2f2d3d" stroke-width="9" stroke-linecap="round" fill="none"/>
+
+  <!-- head facing left -->
+  <ellipse cx="150" cy="116" rx="54" ry="46" fill="#181722"/>
+  <ellipse cx="142" cy="120" rx="34" ry="30" fill="#242334"/>
+
+  <!-- ears -->
+  <polygon points="122,82 105,50 136,72" fill="#161520"/>
+  <polygon points="172,79 190,46 162,70" fill="#161520"/>
+  <polygon points="122,78 112,60 130,71" fill="#70476f"/>
+  <polygon points="170,75 178,59 161,69" fill="#70476f"/>
+
+  <!-- hat -->
+  <path d="M106 72 Q145 20 214 53 Q214 80 189 82 Q157 92 118 85 Q104 82 106 72 Z" fill="#f0b120"/>
+  <ellipse cx="164" cy="83" rx="55" ry="11" fill="#cf900a"/>
+
+  <!-- eyes -->
+  <ellipse cx="127" cy="118" rx="12" ry="12" fill="#f4e57b"/>
+  <ellipse cx="163" cy="114" rx="11" ry="11" fill="#f4e57b"/>
+  <ellipse cx="127" cy="118" rx="4" ry="6" fill="#1a1822"/>
+  <ellipse cx="163" cy="114" rx="4" ry="6" fill="#1a1822"/>
+
+  <!-- nose + whiskers -->
+  <circle cx="146" cy="132" r="3" fill="#2b2832"/>
+  <path d="M146 134 Q142 139 136 137" stroke="#3c3948" stroke-width="2" fill="none"/>
+  <path d="M146 134 Q150 139 154 136" stroke="#3c3948" stroke-width="2" fill="none"/>
+  <path d="M108 128 H88" stroke="#d5d2e7" stroke-width="2"/>
+  <path d="M109 134 H84" stroke="#d5d2e7" stroke-width="2"/>
+  <path d="M183 124 H204" stroke="#d5d2e7" stroke-width="2"/>
+  <path d="M183 130 H207" stroke="#d5d2e7" stroke-width="2"/>
+
+  <!-- paw near easel -->
+  <ellipse cx="252" cy="188" rx="22" ry="10" fill="#1a1822"/>
+  <rect x="228" y="181" width="24" height="14" rx="7" fill="#201f2c"/>
+</svg>
