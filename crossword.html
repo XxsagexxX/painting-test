@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crossword for Cheeto~</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Crossword for Cheeto~</h1>
+      <p>now u gotta solve da custom crossword hmp</p>
+    </header>
+
+    <section id="crossword-stage" class="crossword-stage">
+      <div class="crossword-card">
+        <img class="corner corner-tl" src="cat-corner.svg" alt="" aria-hidden="true" />
+        <img class="corner corner-tr" src="cat-corner.svg" alt="" aria-hidden="true" />
+        <img class="corner corner-bl" src="cat-corner.svg" alt="" aria-hidden="true" />
+        <img class="corner corner-br" src="cat-corner.svg" alt="" aria-hidden="true" />
+
+        <div id="crossword" class="crossword" aria-label="Valentine crossword grid"></div>
+      </div>
+
+      <aside class="clues">
+        <div>
+          <h3>Across</h3>
+          <ol id="across-clues"></ol>
+        </div>
+        <div>
+          <h3>Down</h3>
+          <ol id="down-clues"></ol>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="win-modal">
+    <h2>Happy Valentines, cutie!!! 💘</h2>
+    <p>You solved our inside-joke crossword and unlocked 1000 bonus cuddle points ✨🐈</p>
+    <button id="close-modal">Awwww 💕</button>
+  </dialog>
+
+  <script src="crossword.js"></script>
+</body>
+</html>
