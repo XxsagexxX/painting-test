@@ -17,6 +17,9 @@ let spawnTimer = 0;
 let dodged = 0;
 let hits = 0;
 let ended = false;
+let endedAt = 0;
+let modalShown = false;
+const pilePlushies = [];
 
 function showDialog(text, ms = 2200) {
   dialogEl.textContent = text;
@@ -49,7 +52,7 @@ function drawBackground() {
 }
 
 function drawPixelCat(x, y) {
-  const s = 6;
+  const s = 9;
   const blocks = [
     [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],
     [0, 3], [4, 3],
@@ -85,7 +88,7 @@ function spawnPlushies(dt, elapsedSec) {
     plushies.push({
       x: 30 + Math.random() * (canvas.width - 60),
       y: -30,
-      size: 22 + Math.random() * 8,
+      size: 30 + Math.random() * 10,
       speed: 1.5 + Math.random() * 1.7 + elapsedSec * 0.06,
       icon: plushieIcons[Math.floor(Math.random() * plushieIcons.length)]
     });
@@ -94,7 +97,7 @@ function spawnPlushies(dt, elapsedSec) {
       plushies.push({
         x: 30 + Math.random() * (canvas.width - 60),
         y: -30,
-        size: 22 + Math.random() * 10,
+        size: 32 + Math.random() * 12,
         speed: 2 + Math.random() * 2.2 + elapsedSec * 0.07,
         icon: plushieIcons[Math.floor(Math.random() * plushieIcons.length)]
       });
@@ -114,9 +117,9 @@ function drawPlushies() {
 }
 
 function checkCollisions() {
-  const catW = 42;
-  const catH = 62;
-  const catY = canvas.height - 150;
+  const catW = 62;
+  const catH = 92;
+  const catY = canvas.height - 168;
   const catLeft = catX - catW / 2;
   const catRight = catX + catW / 2;
   const catTop = catY;
@@ -128,6 +131,8 @@ function checkCollisions() {
     if (hit) {
       plushies.splice(i, 1);
       hits++;
+      addPilePiece(p.x, catBottom - 8, p.icon, p.size);
+      if (Math.random() > 0.4) addPilePiece(p.x + (Math.random()*30-15), catBottom - 6, plushieIcons[Math.floor(Math.random() * plushieIcons.length)], p.size * 0.9);
       continue;
     }
 
@@ -140,17 +145,31 @@ function checkCollisions() {
   dodgedEl.textContent = dodged;
 }
 
-function buryCat() {
-  const catY = canvas.height - 150;
-  drawPixelCat(catX - 20, catY);
+function addPilePiece(x, yBase, icon, size = 28) {
+  pilePlushies.push({
+    x: Math.max(24, Math.min(canvas.width - 24, x)),
+    y: yBase - Math.random() * 70,
+    icon,
+    size: Math.max(22, size)
+  });
+}
 
-  ctx.fillStyle = '#d7c2ef';
-  for (let i = 0; i < 26; i++) {
-    const x = Math.random() * canvas.width;
-    const y = canvas.height - 180 + Math.random() * 170;
-    const size = 16 + Math.random() * 22;
-    ctx.font = `${size}px sans-serif`;
-    ctx.fillText(plushieIcons[Math.floor(Math.random() * plushieIcons.length)], x, y);
+function seedFinalPile() {
+  const cx = catX;
+  for (let i = 0; i < 38; i++) {
+    addPilePiece(cx + (Math.random() * 140 - 70), canvas.height - 40, plushieIcons[Math.floor(Math.random() * plushieIcons.length)], 26 + Math.random() * 20);
+  }
+}
+
+function drawBuriedScene() {
+  const catY = canvas.height - 188;
+  drawPixelCat(catX - 28, catY);
+
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  for (const p of pilePlushies) {
+    ctx.font = `${p.size}px sans-serif`;
+    ctx.fillText(p.icon, p.x, p.y);
   }
 }
 
@@ -167,18 +186,25 @@ function loop(now) {
     spawnPlushies(dt, elapsedSec);
     drawPlushies();
 
-    const catY = canvas.height - 150;
-    drawPixelCat(catX - 20, catY);
+    const catY = canvas.height - 188;
+    drawPixelCat(catX - 28, catY);
     checkCollisions();
 
     timeEl.textContent = Math.floor(elapsedSec);
 
     if (hits >= 6 || elapsedSec >= 26) {
       ended = true;
-      running = false;
-      drawBackground();
-      buryCat();
-      setTimeout(() => buriedModal.showModal(), 600);
+      endedAt = now;
+      seedFinalPile();
+    }
+  }
+
+  if (ended) {
+    drawBackground();
+    drawBuriedScene();
+    if (!modalShown && now - endedAt > 2400) {
+      modalShown = true;
+      buriedModal.showModal();
       return;
     }
   }
