@@ -1,5 +1,5 @@
 if (localStorage.getItem('painter_complete') !== 'yes') {
-  window.location.href = 'index.html';
+  window.location.href = 'painter.html';
 }
 
 const size = { rows: 7, cols: 12 };
