@@ -280,15 +280,15 @@ header p { margin: 0.28rem 0 0; font-size: 1.06rem; }
 
 .corner {
   position: absolute;
-  width: 78px;
-  height: 78px;
+  width: 72px;
+  height: 72px;
   filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.12));
 }
 
-.corner-tl { top: -30px; left: -28px; }
-.corner-tr { top: -30px; right: -28px; transform: scaleX(-1); }
-.corner-bl { bottom: -30px; left: -28px; transform: scaleY(-1); }
-.corner-br { bottom: -30px; right: -28px; transform: scale(-1, -1); }
+.corner-tl { top: -22px; left: -22px; }
+.corner-tr { top: -22px; right: -22px; transform: scaleX(-1); }
+.corner-bl { bottom: -22px; left: -22px; transform: scaleY(-1); }
+.corner-br { bottom: -22px; right: -22px; transform: scale(-1, -1); }
 
 .crossword {
   display: grid;
