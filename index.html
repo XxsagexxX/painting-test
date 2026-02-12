@@ -3,58 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artist Cat Mini Game</title>
+  <title>Plushie Escape!</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="page painter-page">
+  <main class="page opener-page">
     <header>
-      <h1>wanna help kittykat paint?</h1>
-      <p id="paint-instruction">Click a step, drag the tool, and drop it on kitty to help paint the flower 🌸</p>
+      <h1>can he escape the plushies</h1>
+      <p>move the kitty left/right with your mouse and dodge incoming plushies</p>
     </header>
 
-    <section class="studio-scene">
-      <div class="wallpaper"></div>
-      <div class="floor"></div>
-
-      <div class="left-props" aria-hidden="true">
-        <div class="basket">🧺</div>
-        <div class="tube">🧴</div>
-        <div class="tube">🧴</div>
+    <section class="opener-stage">
+      <div class="hud">
+        <span>Time: <strong id="time-el">0</strong>s</span>
+        <span>Dodged: <strong id="dodged-el">0</strong></span>
       </div>
 
-      <div class="easel-wrap" id="easel">
-        <div class="easel-top"></div>
-        <canvas id="paint-canvas" width="320" height="470" aria-label="painting canvas"></canvas>
-        <div class="easel-legs"></div>
-      </div>
-
-      <div id="cat-dropzone" class="artist-cat" aria-label="artist cat drop zone">
-        <div id="cat-mood" class="cat-dialog">kitty is ready to paint 🎨</div>
-        <img src="artist-cat.jpg" alt="artist cat" onerror="this.onerror=null;this.src='artist-cat.svg';" />
-      </div>
-
-    </section>
-
-    <section class="tool-controls">
-      <button class="tool-btn" data-tool="pencil" id="step-pencil">1) Give Pencil</button>
-      <button class="tool-btn" data-tool="brush-purple" id="step-purple" disabled>2) Dip Brush in Purple</button>
-      <button class="tool-btn" data-tool="wash" id="step-wash-1" disabled>3) Wash Brush</button>
-      <button class="tool-btn" data-tool="brush-green" id="step-green" disabled>4) Dip Brush in Green</button>
-      <button class="tool-btn" data-tool="wash" id="step-wash-2" disabled>5) Wash Brush</button>
-      <button class="tool-btn" data-tool="outline" id="step-outline" disabled>6) Finish Outline</button>
+      <canvas id="plushie-canvas" width="920" height="520" aria-label="plushie dodge game"></canvas>
+      <div id="gift-dialog" class="gift-dialog hidden"></div>
     </section>
   </main>
 
-  <dialog id="oops-modal">
-    <h2>achoo!! 😾</h2>
-    <p>The painting got ruined. Make it up to kitty?</p>
+  <dialog id="buried-modal">
+    <h2>uh oh seems like u gotta take them all</h2>
+    <p>now come help me make some more gifts</p>
     <div class="choice-row">
-      <button id="oops-yes">yes</button>
-      <button id="oops-yes-2">OFC YES WYM NO</button>
+      <button id="go-painter-yes">yes</button>
+      <button id="go-painter-yes2">what you thought u get a choice?</button>
     </div>
   </dialog>
 
-  <script src="painter.js"></script>
+  <script src="game1.js"></script>
 </body>
 </html>
