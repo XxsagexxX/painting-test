@@ -2,7 +2,9 @@ const canvas = document.getElementById('plushie-canvas');
 const ctx = canvas.getContext('2d');
 const timeEl = document.getElementById('time-el');
 const dodgedEl = document.getElementById('dodged-el');
-const dialogEl = document.getElementById('gift-dialog');
+const introOverlay = document.getElementById('intro-overlay');
+const introText = document.getElementById('intro-text');
+const openerStage = document.getElementById('opener-stage');
 const buriedModal = document.getElementById('buried-modal');
 const toPainterA = document.getElementById('go-painter-yes');
 const toPainterB = document.getElementById('go-painter-yes2');
@@ -21,23 +23,24 @@ let endedAt = 0;
 let modalShown = false;
 const pilePlushies = [];
 
-function showDialog(text, ms = 2200) {
-  dialogEl.textContent = text;
-  dialogEl.classList.remove('hidden');
-  setTimeout(() => dialogEl.classList.add('hidden'), ms);
+function showDialog(text) {
+  introText.textContent = text;
 }
 
 function setupIntro() {
-  showDialog('elloh heres some gifts for you as pawmised', 2600);
-  setTimeout(() => {
-    showDialog('i know how much u like gettin plushies so sage got lots, unless u can escape from them hihih :3', 4200);
-  }, 2900);
+  showDialog('elloh heres some gifts for you as pawmised');
 
   setTimeout(() => {
+    showDialog('i know how much u like gettin plushies so sage got lots, unless u can escape from them hihih :3');
+  }, 2500);
+
+  setTimeout(() => {
+    introOverlay.classList.add('hidden');
+    openerStage.classList.remove('hidden');
     running = true;
     startTime = performance.now();
     requestAnimationFrame(loop);
-  }, 7000);
+  }, 5600);
 }
 
 function drawBackground() {
