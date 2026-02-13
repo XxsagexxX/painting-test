@@ -13,14 +13,21 @@
       <p>move the kitty left/right with your mouse and dodge incoming plushies</p>
     </header>
 
-    <section class="opener-stage">
+
+    <section id="intro-overlay" class="intro-overlay">
+      <div class="intro-card">
+        <img src="artist-cat.svg" alt="pixel black cat narrator" class="intro-cat" />
+        <p id="intro-text" class="intro-text"></p>
+      </div>
+    </section>
+
+    <section id="opener-stage" class="opener-stage hidden">
       <div class="hud">
         <span>Time: <strong id="time-el">0</strong>s</span>
         <span>Dodged: <strong id="dodged-el">0</strong></span>
       </div>
 
-      <canvas id="plushie-canvas" width="920" height="520" aria-label="plushie dodge game"></canvas>
-      <div id="gift-dialog" class="gift-dialog hidden"></div>
+      <canvas id="plushie-canvas" width="390" height="680" aria-label="plushie dodge game"></canvas>
     </section>
   </main>
 
